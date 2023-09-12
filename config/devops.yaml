@@ -1,0 +1,29 @@
+
+
+pipeline {
+    agent any 
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                // Run a Gradle build
+                sh './gradlew build'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                // Run unit tests
+                sh './gradlew test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                // Deploy to a server
+                sh './gradlew deploy'
+            }
+        }
+    }
+}
